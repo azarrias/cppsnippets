@@ -4,6 +4,7 @@
 
 void BinarySearch(std::vector<int> l, int i);
 int FindSmallestElement(std::vector<int> l, size_t i = 0);
+int SelectionSort(std::vector<int> &l);
 
 int main(int argc, char *argv[])
 {
@@ -11,7 +12,9 @@ int main(int argc, char *argv[])
 	std::vector<int> my_vector2 = { 3, 4, 1, 6 };
 	std::list<int> my_list = { 1, 3, 5, 7, 9 };
 	BinarySearch(my_vector, 3);
-	std::cout << FindSmallestElement(my_vector2, 1);
+	SelectionSort(my_vector2);
+	for (int x : my_vector2) 
+		std::cout << x << " ";
 	getchar();
 }
 
@@ -60,17 +63,18 @@ int FindSmallestElement(std::vector<int> l, size_t i)
 	return smallest_index;
 }
 
-/*int SelectionSort(std::vector<int> &l)
+int SelectionSort(std::vector<int> &l)
 {
-	int smallest_idx;
+	if (l.size() < 1)
+		return -1;
 
-	while (l.size() > 0)
+	int smallest_index = 0;
+
+	for (size_t i = 0; i < l.size(); ++i)
 	{
-		smallest_idx = FindSmallestElement(l)
-		v.push_back(l.
+		smallest_index = FindSmallestElement(l, i);
+		std::swap(l[smallest_index], l[i]);
 	}
-	for (int element : l)
-	{
-		v.push_back(l)
-	}
-}*/
+
+	return 0;
+}
