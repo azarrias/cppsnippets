@@ -3,7 +3,7 @@
 #include <list>
 
 void BinarySearch(std::vector<int> l, int i);
-int FindSmallestElement(std::vector<int> l, size_t i = 0);
+int FindSmallestElement(const std::vector<int> &l, size_t i = 0);
 int SelectionSort(std::vector<int> &l);
 
 int main(int argc, char *argv[])
@@ -18,6 +18,12 @@ int main(int argc, char *argv[])
 	getchar();
 }
 
+/**
+ * @brief -> Binary search implementation, with O(log n) complexity
+ * @param std::vector<int> l -> Sorted list of elements
+ * @param int i -> Element that we want to find in that list
+ * @return void
+ */
 void BinarySearch(std::vector<int> l, int i) 
 {
 	int low = 0;
@@ -43,7 +49,13 @@ void BinarySearch(std::vector<int> l, int i)
 	std::cout << i << " can't be found" << std::endl;
 }
 
-int FindSmallestElement(std::vector<int> l, size_t i)
+/**
+ * @brief Finds the smallest element in a list, with O(n) complexity
+ * @param const std::vector<int> & l -> List of elements
+ * @param size_t i -> Starting index (optional)
+ * @return int -> Index of the smallest element in the list / -1: The element cannot be found in the list
+ */
+int FindSmallestElement(const std::vector<int> &l, size_t i)
 {
 	if (l.size() < 1 || l.size() <= i)
 		return -1;
@@ -63,6 +75,11 @@ int FindSmallestElement(std::vector<int> l, size_t i)
 	return smallest_index;
 }
 
+/**
+ * @brief Selection Sort implementation (ascending), with O(n^2) complexity
+ * @param std::vector<int> & l -> List of elements that must be sorted
+ * @return int -> 0: success / -1: the list cannot be sorted
+ */
 int SelectionSort(std::vector<int> &l)
 {
 	if (l.size() < 1)
