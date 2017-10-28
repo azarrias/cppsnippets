@@ -5,6 +5,7 @@
 #include <iterator>
 #include <algorithm>
 #include <functional>
+#include <numeric>
 
 using namespace std;
 
@@ -20,18 +21,16 @@ int main(int argc, char *argv[])
 	uniform_int_distribution<int> dist(0, 9999);
 
 	auto generator = std::bind(dist, mersenne_engine);
-	vector<int> vec(1000);
-	generate(begin(vec), end(vec), generator);
+	vector<int> test_vector(1000);
+	generate(begin(test_vector), end(test_vector), generator);
 
+	// Generate sorted vector
+	vector<int> sorted_vector(1000);
+	iota(begin(sorted_vector), end(sorted_vector), 0);
 
-
-	vector<int> my_vector = { 1, 3, 5, 7, 9 };
-	vector<int> my_vector2 = { 3, 4, 1, 6 };
-	list<int> my_list = { 1, 3, 5, 7, 9 };
-
-	BinarySearch(vec, 3);
-	SelectionSort(my_vector2);
-	for (int x : my_vector2) 
+	BinarySearch(sorted_vector, 3);
+	SelectionSort(test_vector);
+	for (int x : test_vector)
 		cout << x << " ";
 	getchar();
 }
@@ -81,7 +80,7 @@ int FindSmallestElement(const vector<int> &l, size_t i)
 	int smallest = l[i];
 	int smallest_index = i;
 
-	for (i + 1; i < l.size(); ++i)
+	for (; i < l.size(); ++i)
 	{
 		if (l[i] < smallest)
 		{
