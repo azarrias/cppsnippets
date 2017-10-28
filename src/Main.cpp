@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <functional>
 #include <numeric>
+#include "Timer.h"
 
 using namespace std;
 
@@ -29,14 +30,24 @@ int main(int argc, char *argv[])
 	vector<int> sorted_vector(100000);
 	iota(begin(sorted_vector), end(sorted_vector), 0);
 
+	Timer *timer = new Timer();
+	timer->Start();
 	LinearSearch(sorted_vector, 999);
+	cout << "Linear Search: took " << timer->Elapsed() << " milliseconds." << endl;
+
+	timer->Start();
 	BinarySearch(sorted_vector, 999);
+	cout << "Binary Search: took " << timer->Elapsed() << " milliseconds." << endl;
+
+	timer->Start();
 	SelectionSort(test_vector);
+	cout << "Selection Sort: took " << timer->Elapsed() << " milliseconds." << endl;
 
 	//	for (int x : test_vector)
 	//		cout << x << " ";
 	//	getchar();
 
+	delete(timer);
 	return 0;
 }
 
