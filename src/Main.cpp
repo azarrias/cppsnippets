@@ -9,7 +9,8 @@
 
 using namespace std;
 
-void BinarySearch(vector<int> l, int i);
+int LinearSearch(const vector<int> &l, int n);
+int BinarySearch(const vector<int> &l, int i);
 int FindSmallestElement(const vector<int> &l, size_t i = 0);
 int SelectionSort(vector<int> &l);
 
@@ -21,27 +22,48 @@ int main(int argc, char *argv[])
 	uniform_int_distribution<int> dist(0, 9999);
 
 	auto generator = std::bind(dist, mersenne_engine);
-	vector<int> test_vector(1000);
+	vector<int> test_vector(3000);
 	generate(begin(test_vector), end(test_vector), generator);
 
 	// Generate sorted vector
-	vector<int> sorted_vector(1000);
+	vector<int> sorted_vector(100000);
 	iota(begin(sorted_vector), end(sorted_vector), 0);
 
-	BinarySearch(sorted_vector, 3);
+	LinearSearch(sorted_vector, 999);
+	BinarySearch(sorted_vector, 999);
 	SelectionSort(test_vector);
-	for (int x : test_vector)
-		cout << x << " ";
-	getchar();
+
+	//	for (int x : test_vector)
+	//		cout << x << " ";
+	//	getchar();
+
+	return 0;
 }
 
 /**
- * @brief -> Binary search implementation, with O(log n) complexity
+ * @brief Linear search implementation, with O(n) complexity
+ * @param const vector<int> & l -> Sorted list of elements
+ * @param int n -> Element that we want to find in that list
+ * @return int -> Index of the element in the list, -1 if not found
+ */
+int LinearSearch(const vector<int> &l, int n)
+{
+	for (size_t i = 0; i < l.size(); ++i)
+	{
+		if (l[i] == n)
+			return i;
+	}
+
+	return -1;
+}
+
+/**
+ * @brief Binary search implementation, with O(log n) complexity
  * @param std::vector<int> l -> Sorted list of elements
  * @param int i -> Element that we want to find in that list
- * @return void
+ * @return int -> Index of the element in the list, -1 if not found
  */
-void BinarySearch(vector<int> l, int i) 
+int BinarySearch(const vector<int> &l, int i) 
 {
 	int low = 0;
 	int high = l.size() - 1;
@@ -53,17 +75,14 @@ void BinarySearch(vector<int> l, int i)
 		middle = (high + low) / 2;
 		guess = l[middle];
 		if (guess == i)
-		{
-			cout << i << " is found in position " << middle << std::endl;
-			return;
-		}
+			return i;
 		else if (guess > i)
 			high = middle - 1;
 		else
 			low = middle + 1;
 	}
 
-	cout << i << " can't be found" << std::endl;
+	return -1;
 }
 
 /**
