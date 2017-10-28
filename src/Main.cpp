@@ -1,20 +1,38 @@
 #include <iostream>
 #include <vector>
 #include <list>
+#include <random>
+#include <iterator>
+#include <algorithm>
+#include <functional>
 
-void BinarySearch(std::vector<int> l, int i);
-int FindSmallestElement(const std::vector<int> &l, size_t i = 0);
-int SelectionSort(std::vector<int> &l);
+using namespace std;
+
+void BinarySearch(vector<int> l, int i);
+int FindSmallestElement(const vector<int> &l, size_t i = 0);
+int SelectionSort(vector<int> &l);
 
 int main(int argc, char *argv[])
 {
-	std::vector<int> my_vector = { 1, 3, 5, 7, 9 };
-	std::vector<int> my_vector2 = { 3, 4, 1, 6 };
-	std::list<int> my_list = { 1, 3, 5, 7, 9 };
-	BinarySearch(my_vector, 3);
+	// Fill vector with random numbers
+	random_device rnd_device;
+	mt19937 mersenne_engine(rnd_device());
+	uniform_int_distribution<int> dist(0, 9999);
+
+	auto generator = std::bind(dist, mersenne_engine);
+	vector<int> vec(1000);
+	generate(begin(vec), end(vec), generator);
+
+
+
+	vector<int> my_vector = { 1, 3, 5, 7, 9 };
+	vector<int> my_vector2 = { 3, 4, 1, 6 };
+	list<int> my_list = { 1, 3, 5, 7, 9 };
+
+	BinarySearch(vec, 3);
 	SelectionSort(my_vector2);
 	for (int x : my_vector2) 
-		std::cout << x << " ";
+		cout << x << " ";
 	getchar();
 }
 
@@ -24,7 +42,7 @@ int main(int argc, char *argv[])
  * @param int i -> Element that we want to find in that list
  * @return void
  */
-void BinarySearch(std::vector<int> l, int i) 
+void BinarySearch(vector<int> l, int i) 
 {
 	int low = 0;
 	int high = l.size() - 1;
@@ -37,7 +55,7 @@ void BinarySearch(std::vector<int> l, int i)
 		guess = l[middle];
 		if (guess == i)
 		{
-			std::cout << i << " is found in position " << middle << std::endl;
+			cout << i << " is found in position " << middle << std::endl;
 			return;
 		}
 		else if (guess > i)
@@ -46,7 +64,7 @@ void BinarySearch(std::vector<int> l, int i)
 			low = middle + 1;
 	}
 
-	std::cout << i << " can't be found" << std::endl;
+	cout << i << " can't be found" << std::endl;
 }
 
 /**
@@ -55,7 +73,7 @@ void BinarySearch(std::vector<int> l, int i)
  * @param size_t i -> Starting index (optional)
  * @return int -> Index of the smallest element in the list / -1: The element cannot be found in the list
  */
-int FindSmallestElement(const std::vector<int> &l, size_t i)
+int FindSmallestElement(const vector<int> &l, size_t i)
 {
 	if (l.size() < 1 || l.size() <= i)
 		return -1;
@@ -80,7 +98,7 @@ int FindSmallestElement(const std::vector<int> &l, size_t i)
  * @param std::vector<int> & l -> List of elements that must be sorted
  * @return int -> 0: success / -1: the list cannot be sorted
  */
-int SelectionSort(std::vector<int> &l)
+int SelectionSort(vector<int> &l)
 {
 	if (l.size() < 1)
 		return -1;
@@ -90,7 +108,7 @@ int SelectionSort(std::vector<int> &l)
 	for (size_t i = 0; i < l.size(); ++i)
 	{
 		smallest_index = FindSmallestElement(l, i);
-		std::swap(l[smallest_index], l[i]);
+		swap(l[smallest_index], l[i]);
 	}
 
 	return 0;
