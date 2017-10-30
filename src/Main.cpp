@@ -8,7 +8,14 @@
 #include <numeric>
 #include "Timer.h"
 
-using namespace std;
+using std::vector;
+using std::bind;
+using std::random_device;
+using std::mt19937;
+using std::uniform_int_distribution;
+using std::cout;
+using std::endl;
+using std::swap;
 
 int LinearSearch(const vector<int> &l, int n);
 int BinarySearch(const vector<int> &l, int i);
@@ -181,7 +188,7 @@ int MedianOfThree(vector<int> &l, size_t left, size_t right)
 }
 
 /**
- * @brief QuickSort implementation (ascending)
+ * @brief QuickSort implementation (ascending). Performance heavily depends on the choice of an optimal pivot.
  * @param vector<int> & l -> List of elements to be sorted
  * @return void
  * @details Worst-Case: O(n^2), Average-Case: O(n log n)
