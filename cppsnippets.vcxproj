@@ -19,10 +19,12 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Graph.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Graph.h" />
     <ClInclude Include="src\Timer.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
