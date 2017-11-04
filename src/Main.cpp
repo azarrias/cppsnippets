@@ -7,6 +7,7 @@
 #include <functional>
 #include <numeric>
 #include "Timer.h"
+#include "Graph.h"
 
 using std::vector;
 using std::bind;
@@ -69,6 +70,13 @@ int main(int argc, char *argv[])
 	//for (int x : test_vector2)
 	//	cout << x << " ";
 	//	getchar();
+
+	// Create graph
+	Graph my_graph;
+	my_graph.AddNeighbors("Fabra i Puig", { "Sant Andreu", "La Sagrera"});
+	my_graph.AddNeighbors("La Sagrera", { "Fabra i Puig", "Congrés", "Camp de l'Arpa", "Navas", "Onze de Setembre" });
+
+	my_graph.Display();
 
 	delete(timer);
 	return 0;
