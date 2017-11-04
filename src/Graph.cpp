@@ -19,6 +19,11 @@ void Graph::AddNeighbors(const string &node, const set<string> &neighbors)
 		m_adjacency_list.emplace(node, neighbors);
 }
 
+set<string> const &Graph::GetNeighbors(const string &node) const
+{
+	return m_adjacency_list.at(node);
+}
+
 void Graph::Display() const
 {
 	for (map<string, set<string>>::const_iterator it = m_adjacency_list.begin(); it != m_adjacency_list.end(); ++it)

@@ -17,6 +17,7 @@ using std::uniform_int_distribution;
 using std::cout;
 using std::endl;
 using std::swap;
+using std::string;
 
 int LinearSearch(const vector<int> &l, int n);
 int BinarySearch(const vector<int> &l, int i);
@@ -73,8 +74,11 @@ int main(int argc, char *argv[])
 
 	// Create graph
 	Graph my_graph;
+	my_graph.AddNeighbors("Sant Andreu", { "Fabra i Puig", "Torras i Bages" });
 	my_graph.AddNeighbors("Fabra i Puig", { "Sant Andreu", "La Sagrera"});
 	my_graph.AddNeighbors("La Sagrera", { "Fabra i Puig", "Congres", "Camp de l'Arpa", "Navas", "Onze de Setembre" });
+	my_graph.AddNeighbors("Navas", { "Clot", "La Sagrera" });
+	my_graph.AddNeighbors("Clot", { "Glories", "Navas", "Encants", "Bac de Roda" });
 	my_graph.AddNeighbors("WIP", {});
 
 	my_graph.Display();
