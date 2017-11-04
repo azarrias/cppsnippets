@@ -74,7 +74,8 @@ int main(int argc, char *argv[])
 	// Create graph
 	Graph my_graph;
 	my_graph.AddNeighbors("Fabra i Puig", { "Sant Andreu", "La Sagrera"});
-	my_graph.AddNeighbors("La Sagrera", { "Fabra i Puig", "Congrés", "Camp de l'Arpa", "Navas", "Onze de Setembre" });
+	my_graph.AddNeighbors("La Sagrera", { "Fabra i Puig", "Congres", "Camp de l'Arpa", "Navas", "Onze de Setembre" });
+	my_graph.AddNeighbors("WIP", {});
 
 	my_graph.Display();
 

@@ -23,10 +23,13 @@ void Graph::Display() const
 {
 	for (map<string, set<string>>::const_iterator it = m_adjacency_list.begin(); it != m_adjacency_list.end(); ++it)
 	{
-		cout << it->first << " adjacent to ";
-		cout << *(it->second.begin());
-		for (set<string>::const_iterator it2 = next(it->second.begin()); it2 != it->second.end(); ++it2)
-			cout << ", " << *it2;
-		cout << endl;
+		cout << it->first << " adjacent to [";
+		if (it->second.size() > 0) 
+		{
+			cout << *(it->second.begin());
+			for (set<string>::const_iterator it2 = next(it->second.begin()); it2 != it->second.end(); ++it2)
+				cout << ", " << *it2;
+		}
+		cout << "]" << endl;
 	}
 }
