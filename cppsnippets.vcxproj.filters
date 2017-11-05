@@ -24,12 +24,18 @@
     <ClCompile Include="src\Graph.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\WeightedGraph.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Timer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Graph.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\WeightedGraph.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

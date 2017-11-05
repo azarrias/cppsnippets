@@ -59,7 +59,7 @@ void Graph::Display() const
 }
 
 /**
- * @brief Breadth First Search implementation, looks for the shortest path from S to T 
+ * @brief Breadth First Search implementation, looks for the shortest path (in number of edges) from S to T 
  * @param const string & start -> Starting node S
  * @param const string & target -> Target node T
  * @return bool -> True if a path was found, false otherwise

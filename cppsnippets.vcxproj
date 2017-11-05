@@ -22,10 +22,12 @@
     <ClCompile Include="src\Graph.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\Timer.cpp" />
+    <ClCompile Include="src\WeightedGraph.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Graph.h" />
     <ClInclude Include="src\Timer.h" />
+    <ClInclude Include="src\WeightedGraph.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{35ECF357-3674-4FB8-B1A6-DF4191FB4B7A}</ProjectGuid>

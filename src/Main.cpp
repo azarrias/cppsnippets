@@ -8,6 +8,7 @@
 #include <numeric>
 #include "Timer.h"
 #include "Graph.h"
+#include "WeightedGraph.h"
 
 using std::vector;
 using std::bind;
@@ -86,6 +87,12 @@ int main(int argc, char *argv[])
 		cout << "Path found";
 	else
 		cout << "Path not found";
+
+	// Create weighted graph and display it's adjacency list
+	WeightedGraph w_graph;
+	w_graph.AddNeighbors("Start", { { "A", 6 }, {"B", 2} });
+	w_graph.AddNeighbors("B", { {"A", 3}, {"Fin", 5} });
+	w_graph.AddNeighbors("A", { {"Fin", 1} });
 
 	return 0;
 }
