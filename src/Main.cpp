@@ -46,33 +46,33 @@ int main(int argc, char *argv[])
 
 	//vector<int> test_vector2 = { 6, 1, 4, 9, 0, 3, 5, 2, 7, 8 };
 	
-	Timer *timer = new Timer();
-	timer->Start();
+	Timer timer;
+	timer.Start();
 	LinearSearch(sorted_vector, 9999999);
 	cout << "Linear Search (" << SORTED_VECTOR_SIZE << " elements): took " 
-		<< timer->Elapsed() << " milliseconds." << endl;
+		<< timer.Elapsed() << " milliseconds." << endl;
 
-	timer->Start();
+	timer.Start();
 	BinarySearch(sorted_vector, 9999999);
 	cout << "Binary Search (" << SORTED_VECTOR_SIZE << " elements): took " 
-		<< timer->Elapsed() << " milliseconds." << endl;
+		<< timer.Elapsed() << " milliseconds." << endl;
 
-	timer->Start();
+	timer.Start();
 	SelectionSort(test_vector);
 	cout << "Selection Sort (" << TEST_VECTOR_SIZE << " elements): took "
-		<< timer->Elapsed() << " milliseconds." << endl;
+		<< timer.Elapsed() << " milliseconds." << endl;
 
 	// Test quick sort
-	timer->Start();
+	timer.Start();
 	QuickSort(test_vector);
 	cout << "Quick Sort (" << TEST_VECTOR_SIZE << " elements): took "
-		<< timer->Elapsed() << " milliseconds." << endl;
+		<< timer.Elapsed() << " milliseconds." << endl;
 
 	//for (int x : test_vector2)
 	//	cout << x << " ";
 	//	getchar();
 
-	// Create graph
+	// Create graph and display it's adjacency list
 	Graph my_graph;
 	my_graph.AddNeighbors("Sant Andreu", { "Fabra i Puig", "Torras i Bages" });
 	my_graph.AddNeighbors("Fabra i Puig", { "Sant Andreu", "La Sagrera"});
@@ -80,10 +80,13 @@ int main(int argc, char *argv[])
 	my_graph.AddNeighbors("Navas", { "Clot", "La Sagrera" });
 	my_graph.AddNeighbors("Clot", { "Glories", "Navas", "Encants", "Bac de Roda" });
 	my_graph.AddNeighbors("WIP", {});
-
 	my_graph.Display();
 
-	delete(timer);
+	if (my_graph.BreadthFirstSearch("WIP", "Clot"))
+		cout << "Path found";
+	else
+		cout << "Path not found";
+
 	return 0;
 }
 
