@@ -87,12 +87,15 @@ int main(int argc, char *argv[])
 		cout << "Path found";
 	else
 		cout << "Path not found";
+	cout << endl;
 
 	// Create weighted graph and display it's adjacency list
 	WeightedGraph w_graph;
 	w_graph.AddNeighbors("Start", { { "A", 6 }, {"B", 2} });
 	w_graph.AddNeighbors("B", { {"A", 3}, {"Fin", 5} });
 	w_graph.AddNeighbors("A", { {"Fin", 1} });
+	w_graph.AddNeighbors("Fin", {});
+	w_graph.Display();
 
 	return 0;
 }

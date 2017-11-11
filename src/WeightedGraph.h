@@ -7,6 +7,7 @@ class WeightedGraph
 {
 public:
 	void WeightedGraph::AddNeighbors(const std::string &node, const std::unordered_map<std::string, int> &neighbors);
+	void Display() const;
 private:
 	std::unordered_map<std::string, std::unordered_map<std::string, int>> m_adjacency_list;
 };
