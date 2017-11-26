@@ -91,11 +91,14 @@ int main(int argc, char *argv[])
 
 	// Create weighted graph and display it's adjacency list
 	WeightedGraph w_graph;
-	w_graph.AddNeighbors("Start", { { "A", 6 }, {"B", 2} });
+	w_graph.AddNeighbors("Start", { {"A", 6}, {"B", 2} });
 	w_graph.AddNeighbors("B", { {"A", 3}, {"Fin", 5} });
 	w_graph.AddNeighbors("A", { {"Fin", 1} });
 	w_graph.AddNeighbors("Fin", {});
 	w_graph.Display();
+
+	w_graph.DisplayCost("Start", "B");
+	w_graph.DisplayCost("B", "C");
 
 	return 0;
 }
