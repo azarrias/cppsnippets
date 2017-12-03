@@ -8,6 +8,7 @@ class WeightedGraph
 public:
 	void AddNeighbors(const std::string &node, const std::unordered_map<std::string, int> &neighbors);
 	const int *GetCost(const std::string &source, const std::string &target) const;
+	const std::unordered_map<std::string, int>* GetNeighbors(const std::string &node) const;
 	void DisplayCost(const std::string &source, const std::string &target) const;
 	bool Dijkstra(const std::string &start, const std::string &target) const;
 	void Display() const;

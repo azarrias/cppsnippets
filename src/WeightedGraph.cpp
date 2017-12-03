@@ -1,4 +1,5 @@
 #include "WeightedGraph.h"
+#include <algorithm>
 #include <iostream>
 #include <limits>
 #include <string>
@@ -6,6 +7,8 @@
 
 using std::cout;
 using std::endl;
+using std::min_element;
+using std::pair;
 using std::string;
 using std::unordered_map;
 
@@ -27,11 +30,19 @@ void WeightedGraph::AddNeighbors(const string &node, const unordered_map<string,
 		m_adjacency_list.emplace(node, neighbors);
 }
 
-const int *WeightedGraph::GetCost(const string &source, const string &target) const
+const int* WeightedGraph::GetCost(const string &source, const string &target) const
 {
 	if (m_adjacency_list.count(source) > 0)
 		if (m_adjacency_list.at(source).count(target) > 0)
 			return &m_adjacency_list.at(source).at(target);
+
+	return nullptr;
+}
+
+const unordered_map<string, int>* WeightedGraph::GetNeighbors(const string &node) const
+{
+	if (m_adjacency_list.count(node) > 0)
+		return &m_adjacency_list.at(node);
 
 	return nullptr;
 }
@@ -47,7 +58,49 @@ void WeightedGraph::DisplayCost(const string &source, const string &target) cons
 
 bool WeightedGraph::Dijkstra(const std::string &start, const std::string &target) const
 {
-	return true;
+	unordered_map<string, int> closed_set;
+	unordered_map<string, int> open_set;
+	unordered_map<string, string> parents;
+	unordered_map<string, int>::const_iterator it_N;
+	string N;
+	int N_cost, K_cost;
+
+	open_set.insert(pair<string, int>(start, 0));
+
+	while (1)
+	{
+		it_N = min_element(open_set.begin(), open_set.end(),
+			[](const pair<string, int>& l, const pair<string, int>& r) -> bool { return l.second < r.second; });
+
+		N = it_N->first;
+		N_cost = it_N->second;
+
+		closed_set.insert(*it_N);
+		open_set.erase(N);
+
+		if (N == target)
+			return true;
+		else if (nullptr == GetNeighbors(N))
+			return false;
+		else
+		{
+			for (unordered_map<string, int>::const_iterator it_K = GetNeighbors(N)->begin(); it_K != GetNeighbors(N)->end(); ++it_K)
+			{
+				if (closed_set.find(it_K->first) == closed_set.end())
+				{
+					K_cost = it_K->second + N_cost;
+					if (open_set.find(it_K->first) == open_set.end())
+					{
+						open_set.emplace(pair<string, int>(it_K->first, K_cost));
+					}
+					else if (K_cost < open_set.find(it_K->first)->second)
+					{
+						open_set.at(it_K->first) = K_cost;
+					}
+				}
+			}
+		}
+	}
 }
 
 /**

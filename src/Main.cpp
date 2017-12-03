@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
 	static const size_t TEST_VECTOR_SIZE = 5000;
 
 	// Fill vector with random numbers
-	random_device rnd_device;
+/*	random_device rnd_device;
 	mt19937 mersenne_engine(rnd_device());
 	uniform_int_distribution<int> dist(0, 9999);
 
@@ -87,7 +87,7 @@ int main(int argc, char *argv[])
 		cout << "Path found";
 	else
 		cout << "Path not found";
-	cout << endl;
+	cout << endl;*/
 
 	// Create weighted graph and display it's adjacency list
 	WeightedGraph w_graph;
@@ -99,6 +99,8 @@ int main(int argc, char *argv[])
 
 	w_graph.DisplayCost("Start", "B");
 	w_graph.DisplayCost("B", "C");
+
+	w_graph.Dijkstra("Start", "Fin");
 
 	return 0;
 }
