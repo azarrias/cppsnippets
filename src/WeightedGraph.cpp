@@ -56,6 +56,13 @@ void WeightedGraph::DisplayCost(const string &source, const string &target) cons
 		cout << "There is no path from node " << source << " to node " << target << endl;
 }
 
+/**
+ * @brief Calculate the shortest path for a weighted graph using Dijkstra's algorithm.
+ * @param const std::string & start -> Starting node S
+ * @param const std::string & target -> Target node T
+ * @return bool -> True if a path was found, false otherwise
+ * @details Dijkstra's algorithm only works when all weights are positive (otherwise, use Bellman-Ford)
+ */
 bool WeightedGraph::Dijkstra(const std::string &start, const std::string &target) const
 {
 	unordered_map<string, int> closed_set;
@@ -92,10 +99,12 @@ bool WeightedGraph::Dijkstra(const std::string &start, const std::string &target
 					if (open_set.find(it_K->first) == open_set.end())
 					{
 						open_set.emplace(pair<string, int>(it_K->first, K_cost));
+						parents.emplace(pair<string, string>(it_K->first, N));
 					}
 					else if (K_cost < open_set.find(it_K->first)->second)
 					{
 						open_set.at(it_K->first) = K_cost;
+						parents.at(it_K->first) = N;
 					}
 				}
 			}
