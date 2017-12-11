@@ -27,6 +27,9 @@
     <ClCompile Include="src\WeightedGraph.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\KnapsackSet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Timer.h">
@@ -37,6 +40,9 @@
     </ClInclude>
     <ClInclude Include="src\WeightedGraph.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\KnapsackSet.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

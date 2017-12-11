@@ -20,12 +20,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Graph.cpp" />
+    <ClCompile Include="src\KnapsackSet.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\Timer.cpp" />
     <ClCompile Include="src\WeightedGraph.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Graph.h" />
+    <ClInclude Include="src\KnapsackSet.h" />
     <ClInclude Include="src\Timer.h" />
     <ClInclude Include="src\WeightedGraph.h" />
   </ItemGroup>

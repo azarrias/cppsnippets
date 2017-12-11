@@ -8,6 +8,7 @@
 #include <numeric>
 #include "Timer.h"
 #include "Graph.h"
+#include "KnapsackSet.h"
 #include "WeightedGraph.h"
 
 using std::vector;
@@ -17,6 +18,7 @@ using std::mt19937;
 using std::uniform_int_distribution;
 using std::cout;
 using std::endl;
+using std::pair;
 using std::swap;
 using std::string;
 
@@ -101,6 +103,13 @@ int main(int argc, char *argv[])
 	w_graph.DisplayCost("B", "C");
 
 	w_graph.Dijkstra("Start", "Fin");
+
+	// Create set of goods for knapsack problem
+	KnapsackSet k_set;
+	k_set.AddItem("Stereo", 3000, 4);
+	k_set.AddItem("Laptop", 2000, 3);
+	k_set.AddItem("Guitar", 1500, 1);
+	k_set.Knapsack(50);
 
 	return 0;
 }
@@ -261,3 +270,4 @@ void QuickSort(vector<int> &l, size_t left, size_t right)
 		QuickSort(l, i + 1, right);
 	}
 }
+
